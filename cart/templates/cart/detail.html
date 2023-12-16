@@ -10,7 +10,7 @@ Your shopping cart
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
+            <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong
                     class="text-black">Cart</strong></div>
         </div>
     </div>
@@ -46,7 +46,7 @@ Your shopping cart
                                 <td>
                                     <div class="input-group mb-3" style="max-width: 120px;">
                                         <div class="input-group-prepend">
-                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
                                                 {% csrf_token %}
                                                 {{ item.update_quantity_form.quantity }}
                                                 {{ item.update_quantity_form.override }}
@@ -57,7 +57,7 @@ Your shopping cart
                                     </div>
                                 </td>
                                 <td>${{ item.total_price }}</td>
-                                <td><a href="{% url "cart:cart_remove" product.id %}"
+                                <td><a href="{% url 'cart:cart_remove' product.id %}"
                                         class="btn btn-primary btn-sm">X</a></td>
                             </tr>
                             {% endwith %}
@@ -74,7 +74,8 @@ Your shopping cart
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <button onclick="window.location='{% url "shop:product_list" %}'" class="btn btn-primary btn-sm btn-block">Continue Shopping</button>
+                        <button onclick="window.location='{% url 'shop:product_list' %}'"
+                            class="btn btn-primary btn-sm btn-block">Continue Shopping</button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-primary btn-sm btn-block">Checkout</button>
@@ -85,7 +86,7 @@ Your shopping cart
                         <label class="text-black h4" for="coupon">Coupon</label>
                         <p>Enter your coupon code if you have one.</p>
                     </div>
-                    <form action="{% url "coupons:apply" %}" method="post">
+                    <form action="{% url 'coupons:apply' %}" method="post">
                         {% csrf_token %}
                         <div class="col-md-8 mb-3 mb-md-0">
                             {{ coupon_apply_form.code|as_crispy_field }}
@@ -110,14 +111,17 @@ Your shopping cart
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">{{ cart.get_total_price_after_discount|floatformat:"2" }}</strong>
+                                <strong class="text-black">
+                                    {{cart.get_total_price_after_discount|floatformat:"2"}}</strong>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-lg py-3 btn-block"
-                                    onclick="window.location='{% url "order:order_create" %}'">Proceed To Checkout</button>
+                                    onclick="window.location='{% url 'order:order_create' %}'">
+                                    Proceed To Checkout
+                                </button>
                             </div>
                         </div>
                     </div>

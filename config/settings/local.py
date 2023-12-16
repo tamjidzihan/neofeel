@@ -118,10 +118,10 @@ CART_SESSION_ID = 'cart'
 # Use BigAutoField as the default auto field for all models
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+# DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 
-AWS_ACCESS_KEY_ID  = "AKIA5W4D7PBZJQR3CKN7"
+# AWS_ACCESS_KEY_ID  = "AKIA5W4D7PBZJQR3CKN7"
 
-AWS_SECRET_ACCESS_KEY = "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"
+# AWS_SECRET_ACCESS_KEY = "kiBiB/c9hjafWH00vJby7xkbIvLFO5UIQ6oHzP4l"
 
-AWS_STORAGE_BUCKET_NAME = "neofeel"
+# AWS_STORAGE_BUCKET_NAME = "neofeel"
