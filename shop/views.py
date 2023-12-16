@@ -17,7 +17,9 @@ from time import timezone
 
 
 def home(request):
-    return render(request, 'shop/home.html')
+    products = Product.objects.filter(available=True)
+    context = {'products': products}
+    return render(request, 'shop/home.html',context)
 
 
 
