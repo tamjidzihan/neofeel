@@ -15,6 +15,7 @@
   </div>
 </div>
 
+
 <div class="site-section">
   <div class="container">
     <div class="row">
@@ -25,18 +26,46 @@
         <h2 class="text-black mr-2">{{ product.name }}</h2>
         <p>{{ product.description|linebreaks }}</p>
         <p><strong class="text-primary h4">${{ product.price }}</strong></p>
-        <div class="mt-5 col-md-5">
-          <form action="{% url 'cart:cart_add' product.id %}" method="post">
-            {% csrf_token %}
+
+        <!-- Cart Add Form -->
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+          {% csrf_token %}
+
+          <!-- Quantity Field -->
+          <div class="form-group">
+            {{ cart_product_form.quantity.label_tag }}
+            {{ cart_product_form.quantity }}
             {{ cart_product_form|crispy }}
+          </div>
+
+          <!-- Sizes Field -->
+          <div class="form-group">
+            <fieldset>
+              <legend>Sizes:</legend>
+              {% for radio in cart_product_form.size %}
+              <label class="pr-4" for="{{ radio.id_for_label }}">
+                {{ radio.tag }}
+                {{ radio.choice_label }}
+              </label>
+              {% endfor %}
+            </fieldset>
+          </div>
+
+          <!-- Update Field -->
+          <div class="form-group">
+            {{ cart_product_form.update }}
+          </div>
+
+          <!-- Add to Cart Button -->
+          <div class="form-group">
             <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add to cart">
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-</div>
+
 
 <div class="site-section block-3 site-blocks-2 bg-light">
   <div class="container">
