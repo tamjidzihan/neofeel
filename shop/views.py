@@ -10,6 +10,13 @@ def home(request):
     return render(request, 'shop/home.html',context)
 
 
+def search_product(request):
+    products = Product.objects.filter(available=True)
+    context = {
+        'products': products
+        }
+    return render(request,'shop/product/search.html',context)
+
 
 def product_list(request, category_slug=None):
     category = None
@@ -35,3 +42,6 @@ def product_detail(request, id, slug):
         'cart_product_form': cart_product_form
         }
     return render(request, 'shop/product/detail.html', context)
+
+
+

@@ -33,9 +33,9 @@
 
           <!-- Quantity Field -->
           <div class="form-group">
+            {% csrf_token %}
             {{ cart_product_form.quantity.label_tag }}
             {{ cart_product_form.quantity }}
-            {{ cart_product_form|crispy }}
           </div>
 
           <!-- Sizes Field -->
@@ -43,6 +43,7 @@
             <fieldset>
               <legend>Sizes:</legend>
               {% for radio in cart_product_form.size %}
+              {% csrf_token %}
               <label class="pr-4" for="{{ radio.id_for_label }}">
                 {{ radio.tag }}
                 {{ radio.choice_label }}

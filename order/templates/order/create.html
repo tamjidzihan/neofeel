@@ -13,6 +13,7 @@ Checkout
             <li>
                 {{ item.quantity }}x {{ item.product.name }}
                 <span>${{ item.total_price }}</span>
+                <span>{{ item.size }}</span>
             </li>
             {% endfor %}
         </ul>

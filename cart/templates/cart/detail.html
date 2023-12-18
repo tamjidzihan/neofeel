@@ -27,6 +27,7 @@ Your shopping cart
                                 <th class="product-thumbnail">Image</th>
                                 <th class="product-name">Product</th>
                                 <th class="product-price">Price</th>
+                                <th class="product-size">Size</th>
                                 <th class="product-quantity">Quantity</th>
                                 <th class="product-total">Total</th>
                                 <th class="product-remove">Remove</th>
@@ -43,6 +44,16 @@ Your shopping cart
                                     <h2 class="h5 text-black">{{ product.name }}</h2>
                                 </td>
                                 <td>${{ item.price }}</td>
+                                <td>
+                                    <div class="input-group pl-4 mb-3" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                                {% csrf_token %}
+                                                {{ item.size }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="input-group mb-3" style="max-width: 120px;">
                                         <div class="input-group-prepend">
